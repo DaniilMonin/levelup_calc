@@ -1,9 +1,14 @@
-﻿namespace Math.Calculator.Core
+﻿using System;
+
+namespace Math.Calculator.Core
 {
     public interface ICalculationOperator
     {
+        Guid Id { get; }
+
         string DisplayName { get; }
 
-        void Execute();
+        void Execute(ICalculationOperationArguments arguments);
     }
+
 }

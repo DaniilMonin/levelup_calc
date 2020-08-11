@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7A8904CE-1108-4938-BC22-3BF14798B915}</ProjectGuid>
+    <ProjectGuid>{F7DE4392-945B-4546-AFE3-86D19AD72A5E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Math.Calculator.Core</RootNamespace>
-    <AssemblyName>Math.Calculator.Core</AssemblyName>
+    <RootNamespace>Math.Calculator.Console</RootNamespace>
+    <AssemblyName>Math.Calculator.Console</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,8 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentValidation, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentValidation.9.0.1\lib\net461\FluentValidation.dll</HintPath>
+    <Reference Include="FluentCommandLineParser, Version=1.4.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentCommandLineParser.1.4.3\lib\net35\FluentCommandLineParser.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -44,32 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CalculationOperator.cs" />
-    <Compile Include="CalculationOperatorValidator.cs" />
-    <Compile Include="CalculationValidationResult.cs" />
-    <Compile Include="Calculator.cs" />
-    <Compile Include="FluentCalculationOperatorValidator.cs" />
-    <Compile Include="ICalculationOperationArguments.cs" />
-    <Compile Include="ICalculationOperator.cs" />
-    <Compile Include="ICalculationOperatorValidator.cs" />
-    <Compile Include="ICalculationRoot.cs" />
-    <Compile Include="ICalculationValidationMessageResult.cs" />
-    <Compile Include="ICalculationValidationResult.cs" />
-    <Compile Include="IHistoryItem.cs" />
-    <Compile Include="IInputManager.cs" />
-    <Compile Include="IMemoryItem.cs" />
-    <Compile Include="IInputManagerResult.cs" />
-    <Compile Include="IResultOutputManager.cs" />
-    <Compile Include="ISettingsService.cs" />
-    <Compile Include="Operators\IDivideCalculationOperator.cs" />
+    <Compile Include="ConsoleInputManager.cs" />
+    <Compile Include="ConsoleResultOutputManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Validators\DivideByZeroCalculationOperatorValidator.cs" />
-    <Compile Include="Validators\MaxCalculationOperatorValidator.cs" />
-    <Compile Include="Validators\NullCalculationOperatorValidator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Math.Calculator.Core\Math.Calculator.Core.csproj">
+      <Project>{7a8904ce-1108-4938-bc22-3bf14798b915}</Project>
+      <Name>Math.Calculator.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

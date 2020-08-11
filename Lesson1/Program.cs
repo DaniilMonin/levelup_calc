@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,11 +11,21 @@ namespace Lesson1
     {
         static void Main(string[] args)
         {
-            MyList<FooItem, int> list = new MyList<FooItem, int>();
+
+            List<object> list = new List<object>();
+
+            
+            ArrayList arrayList = new ArrayList();
+
+            //arrayList.Add()
+
+
+
+            /*MyList<FooItem, int> list = new MyList<FooItem, int>();
 
             list.Current = new FooItem();
 
-            list.Build();
+            list.Build();*/
 
             /*MyList<Item> list2 = new MyList<Item>();
 

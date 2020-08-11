@@ -15,7 +15,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Variations", "Variations", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Math.Calculator.Standard", "Math.Calculator.Standard\Math.Calculator.Standard.csproj", "{EB7B768E-4FBE-4192-846C-A82A42D06807}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Math.Calculator.Scientific", "Math.Calculator.Scientific\Math.Calculator.Scientific.csproj", "{653D3B8A-8512-4F1D-AB43-5C7FE0E64FCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Math.Calculator.Scientific", "Math.Calculator.Scientific\Math.Calculator.Scientific.csproj", "{653D3B8A-8512-4F1D-AB43-5C7FE0E64FCA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Views", "Views", "{8E184E45-B79D-48EB-8C65-998F5FA19D4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Math.Calculator.Console", "Math.Calculator.Console\Math.Calculator.Console.csproj", "{F7DE4392-945B-4546-AFE3-86D19AD72A5E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +47,10 @@ Global
 		{653D3B8A-8512-4F1D-AB43-5C7FE0E64FCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{653D3B8A-8512-4F1D-AB43-5C7FE0E64FCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{653D3B8A-8512-4F1D-AB43-5C7FE0E64FCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7DE4392-945B-4546-AFE3-86D19AD72A5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7DE4392-945B-4546-AFE3-86D19AD72A5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7DE4392-945B-4546-AFE3-86D19AD72A5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7DE4392-945B-4546-AFE3-86D19AD72A5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,6 +59,8 @@ Global
 		{7A8904CE-1108-4938-BC22-3BF14798B915} = {B0BA110D-4742-48A7-A71F-28EE978C3F3C}
 		{EB7B768E-4FBE-4192-846C-A82A42D06807} = {619FC8AF-66A2-4B8A-B6DE-774E69B46163}
 		{653D3B8A-8512-4F1D-AB43-5C7FE0E64FCA} = {619FC8AF-66A2-4B8A-B6DE-774E69B46163}
+		{8E184E45-B79D-48EB-8C65-998F5FA19D4C} = {619FC8AF-66A2-4B8A-B6DE-774E69B46163}
+		{F7DE4392-945B-4546-AFE3-86D19AD72A5E} = {8E184E45-B79D-48EB-8C65-998F5FA19D4C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6B2419D4-BCE4-4BAE-946D-CED2960051F2}

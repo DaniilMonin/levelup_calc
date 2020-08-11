@@ -6,9 +6,13 @@ namespace Math.Calculator.Standard
 {
     internal sealed class StandardPlusCalculationOperator : CalculationOperator
     {
-        protected override void DoExecute()
+        protected override double DoExecute(ICalculationOperationArguments arguments)
         {
+            return default;
+        }
 
+        public StandardPlusCalculationOperator(IResultOutputManager outputManager) : base(outputManager)
+        {
         }
     }
 }

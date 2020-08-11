@@ -6,7 +6,7 @@ namespace Math.Calculator.Standard
 
     public /*internal*/ sealed class StandardCalculator : Core.Calculator
     {
-        public StandardCalculator(string name) : base(name)
+        public StandardCalculator(string name, IInputManager inputManager, IResultOutputManager resultOutputManager) : base(name, inputManager, resultOutputManager)
         {
         }
 
@@ -14,10 +14,10 @@ namespace Math.Calculator.Standard
         {
             return new List<ICalculationOperator>()
             {
-                new StandardMinusCalculationOperator(),
-                new StandardPlusCalculationOperator(),
-                new StandardMultiplicationCalculationOperator(),
-                new StandardDivideCalculationOperator()
+                new StandardMinusCalculationOperator(OutputManager),
+                new StandardPlusCalculationOperator(OutputManager),
+                new StandardMultiplicationCalculationOperator(OutputManager),
+                new StandardDivideCalculationOperator(OutputManager)
             };
         }
     }

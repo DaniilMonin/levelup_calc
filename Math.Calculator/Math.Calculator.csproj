@@ -50,6 +50,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Math.Calculator.Console\Math.Calculator.Console.csproj">
+      <Project>{f7de4392-945b-4546-afe3-86d19ad72a5e}</Project>
+      <Name>Math.Calculator.Console</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Math.Calculator.Core\Math.Calculator.Core.csproj">
       <Project>{7a8904ce-1108-4938-bc22-3bf14798b915}</Project>
       <Name>Math.Calculator.Core</Name>

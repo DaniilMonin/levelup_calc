@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Math.Calculator.Core.Validators;
 
 namespace Math.Calculator.Core
 {
     public abstract class CalculationOperator : ICalculationOperator
     {
+        private readonly IResultOutputManager _outputManager;
         private readonly IDictionary<string, ICalculationOperatorValidator<ICalculationOperator>> _validators = new Dictionary<string, ICalculationOperatorValidator<ICalculationOperator>>();
 
-        protected CalculationOperator()
+        protected CalculationOperator(IResultOutputManager outputManager)
         {
+            _outputManager = outputManager;
+
             AddValidatorItem(new NullCalculationOperatorValidator());
         }
 
@@ -19,18 +21,42 @@ namespace Math.Calculator.Core
             get { return nameof(CalculationOperator); }
         }
 
-        public void Execute()
+        public virtual Guid Id
+        {
+            get
+            {
+                return Guid.Empty;
+            }
+        }
+
+        public void Execute(ICalculationOperationArguments arguments)
         {
             try
             {
-                if (Validate().All(x => x.IsValid))
+                bool isValid = true;
+
+                IReadOnlyList<ICalculationValidationResult> validationResults = Validate();
+
+                foreach (ICalculationValidationResult validationResult in validationResults)
                 {
-                    DoExecute();
+                    if (validationResult.IsValid)
+                    {
+                        continue;
+                    }
+
+                    _outputManager.Render(validationResult);
+
+                    isValid = false;
+                }
+
+                if (isValid)
+                {
+                    _outputManager.Render(DoExecute(arguments));
                 }
             }
             catch (Exception exception)
             {
-                Console.WriteLine(exception);
+                _outputManager.Error(exception);
             }
         }
 
@@ -77,9 +103,9 @@ namespace Math.Calculator.Core
             _validators.Add(validator.Id, validator);
         }
 
-        protected virtual void DoExecute()
+        protected virtual double DoExecute(ICalculationOperationArguments arguments)
         {
-
+            return default;
         }
 
 
