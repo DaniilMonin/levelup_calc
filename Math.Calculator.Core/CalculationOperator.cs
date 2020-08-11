@@ -25,6 +25,8 @@ namespace Math.Calculator.Core
         {
             get
             {
+
+
                 return Guid.Empty;
             }
         }
