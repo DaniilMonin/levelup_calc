@@ -13,6 +13,7 @@ namespace Math.Calculator.Standard
 
         public StandardDivideCalculationOperator(IResultOutputManager outputManager) : base(outputManager)
         {
+            //AddValidatorItem(new DivideByZeroCalculationOperatorValidator());
         }
 
         public double FirstArgument
