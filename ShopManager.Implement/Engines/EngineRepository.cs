@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Ninject;
 using ShopManager.Core.Generic;
 using ShopManager.Data;
 
@@ -8,6 +9,7 @@ namespace ShopManager.Implement.Engines
     {
         private readonly IEngineFactory _factory;
 
+        [Inject]
         public EngineRepository(IEngineFactory factory/*, IErrorManager errorManager*/) : base(factory/*, errorManager*/)
         {
             _factory = factory;
@@ -27,7 +29,7 @@ namespace ShopManager.Implement.Engines
 
         public override void Update(EngineEntity entity)
         {
-
+            //Dictionary<int,int>
         }
 
         public override void Delete(int id)

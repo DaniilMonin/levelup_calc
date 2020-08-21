@@ -14,6 +14,12 @@ namespace ShopManager
 
             IKernel kernel = new StandardKernel();
 
+            int genA = GC.GetGeneration(kernel);
+
+            GC.Collect();
+
+            int genB = GC.GetGeneration(kernel);
+
             ShopManager.Core.Bootstrapper.PrepairKernel(kernel);
             ShopManager.Implement.Bootstrapper.PrepairKernel(kernel);
 

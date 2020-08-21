@@ -2,8 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Ninject;
 
@@ -13,6 +15,31 @@ namespace Lesson1
     {
         static void Main(string[] args)
         {
+
+            AboutForm aboutForm = new AboutForm();
+            FindAndReplaceForm findAndReplaceForm = new FindAndReplaceForm();
+
+
+            aboutForm.AddId(100).AddLocale("ru_RU".RemoveSecondChar().RemoveSecondChar());
+
+
+
+            /*
+            LocalizableCaptionAttribute att = aboutForm
+                .GetType()
+                .GetTypeInfo()
+                .GetCustomAttribute<LocalizableCaptionAttribute>();
+
+
+            System.Console.WriteLine($"My id is {att.Id}");*/
+
+
+            List<int> jkl = new List<int>() {1, 2, 3};
+
+
+            jkl.Where(x => x > 2).FirstOrDefault();
+
+
             IKernel kernel = new StandardKernel();
 
             kernel.Bind<ILogger>().To<ConsoleLogger>().InSingletonScope();
@@ -48,12 +75,90 @@ namespace Lesson1
 
             int length = stringsService.GetStringLength();
 
+            //Thread.
         }
     }
 
 
+
+    public static class BaseFormExtension
+    {
+        public static string RemoveSecondChar(this string text)
+        {
+            return text.Remove(1, 1);
+        }
+
+
+        public static BaseForm AddId(this BaseForm form, int id)
+        {
+            form.Id = id;
+
+            return form;
+        }
+
+        public static BaseForm AddLocale(this BaseForm form, string locale)
+        {
+            form.CurrentLocale = locale;
+
+            return form;
+        }
+
+    }
+
+
+
+
+    public sealed class LocalizableCaptionAttribute : Attribute
+    {
+        private readonly string _resourceId;
+
+        public LocalizableCaptionAttribute(string resourceId)
+        {
+            _resourceId = resourceId;
+        }
+
+        public string ResourceId => _resourceId;
+    }
+
+    public abstract class BaseForm
+    {
+
+        public BaseForm()
+        {
+            LocalizableCaptionAttribute att = this
+                .GetType()
+                .GetTypeInfo()
+                .GetCustomAttribute<LocalizableCaptionAttribute>();
+
+            Caption = att.ResourceId;
+        }
+
+        public int Id { get; set; }
+
+        public string CurrentLocale { get; set; }
+
+        public string Caption { get; private set; }
+    }
+
+
+    [LocalizableCaption("localizeString_1")]
+    public class AboutForm : BaseForm
+    {
+        
+    }
+
+
+    [LocalizableCaption("localizeString_2")]
+    public class FindAndReplaceForm : BaseForm
+    {
+
+    }
+
+
+
     public interface IFactory<TData>
     {
+        [Obsolete("OLD CODE DETECTED")]
         TData Build();
     }
 
@@ -89,6 +194,47 @@ namespace Lesson1
         public int Id { get; set; }
     }
 
+
+    public abstract class ChainsAction
+    {
+        public virtual bool DoWork(int id)
+        {
+            return true;
+        }
+    }
+
+    public class ChainsOfRespons
+    {
+        private readonly IReadOnlyList<ChainsAction> _chainsActions;
+
+        public ChainsOfRespons(IReadOnlyList<ChainsAction> chainsActions)
+        {
+            _chainsActions = chainsActions;
+        }
+
+        public void Run(int id)
+        {
+            foreach (ChainsAction action in _chainsActions)
+            {
+                if (action.DoWork(id))
+                {
+                    break;
+                }
+            }
+        }
+    }
+
+
+    /*public class BookFactory
+    {
+        public BookEntity Build()
+        {
+            return new BookEntity(null, null, null)
+            {
+                Id = 1,
+            };
+        }
+    }*/
 
     public sealed class BookEntity : Entity
     {
