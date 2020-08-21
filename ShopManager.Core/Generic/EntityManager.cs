@@ -15,9 +15,15 @@ namespace ShopManager.Core.Generic
             _repository = repository;
         }
 
+        public IReadOnlyList<TEntity> Entities
+        {
+            get => _index;
+            private set => _index = value;
+        }
+
         public void Refresh()
         {
-            _index = _repository.Get();
+            Entities = _repository.Get();
         }
 
         public IReadOnlyList<TEntity> GetAllEntitiesWhereEmptyNames()

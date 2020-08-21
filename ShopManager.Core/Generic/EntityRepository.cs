@@ -7,12 +7,10 @@ namespace ShopManager.Core.Generic
         where TEntity : Entity
     {
         private readonly IEntityFactory<TEntity> _factory;
-        private readonly IErrorManager _errorManager;
 
-        protected EntityRepository(IEntityFactory<TEntity> factory/*, IErrorManager errorManager*/)
+        protected EntityRepository(IEntityFactory<TEntity> factory)
         {
             _factory = factory;
-            //_errorManager = errorManager;
         }
 
         public TEntity Create()

@@ -8,5 +8,12 @@
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ShopManager.Core\ShopManager.Core.csproj" />
+    <ProjectReference Include="..\ShopManager.Data.Db\ShopManager.Data.Db.csproj" />
+    <ProjectReference Include="..\ShopManager.Data\ShopManager.Data.csproj" />
+    <ProjectReference Include="..\ShopManager.Implement\ShopManager.Implement.csproj" />
+  </ItemGroup>
+
 
 </Project>

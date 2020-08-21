@@ -4,6 +4,7 @@ using ShopManager.Core.Generic;
 using ShopManager.Data;
 using ShopManager.Implement.Cars;
 using ShopManager.Implement.Engines;
+using ShopManager.Implement.Users;
 
 namespace ShopManager.Implement
 {
@@ -20,6 +21,9 @@ namespace ShopManager.Implement
 
             kernel.Bind<IEntityRepository<EngineEntity>, EntityRepository<EngineEntity>, IEngineRepository>().To<EngineRepository>().InSingletonScope();
             kernel.Bind<IEntityManager, IEntityManager<EngineEntity>, EntityManager<EngineEntity>, IEngineManager>().To<EngineManager>().InSingletonScope();
+
+            kernel.Bind<IUserFactory, IEntityFactory<User>>().To<UserFactory>().InSingletonScope();
+            kernel.Bind<IEntityManager, IEntityManager<User>, EntityManager<User>, IUserManager>().To<UserManager>().InSingletonScope();
 
             //RegisterEntity<CarEntity, CarFactory, CarRepository, CarManager>(kernel);
             //RegisterEntity<EngineEntity, EngineFactory, EngineRepository, EngineManager>(kernel);

@@ -1,4 +1,6 @@
-﻿namespace ShopManager.Core
+﻿using System.Collections.Generic;
+
+namespace ShopManager.Core
 {
     public interface  IEntityManager
     {
