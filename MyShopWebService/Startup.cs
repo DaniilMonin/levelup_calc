@@ -28,7 +28,7 @@ namespace MyShopWebService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
+            
             services.AddScoped<SampleService>();
             services.AddScoped<InnerService>();
             services.AddScoped<CompositionRoot, CompositionRoot>();

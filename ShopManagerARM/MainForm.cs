@@ -13,9 +13,9 @@ using RestSharp.Authenticators;
 
 namespace ShopManagerARM
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -30,8 +30,13 @@ namespace ShopManagerARM
 
             List<User> users = JsonConvert.DeserializeObject<List<User>>(response.Content);
 
-            bindingSource1.DataSource = users;
+            erpDataBindingSource.DataSource = users;
             //response.Content
+        }
+
+        private void aboutButton_Click(object sender, EventArgs e)
+        {
+            new AbooutForm().ShowDialog();
         }
     }
 

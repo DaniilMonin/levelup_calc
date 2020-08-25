@@ -1,6 +1,8 @@
-﻿using Ninject;
+﻿using FluentValidation;
+using Ninject;
 using ShopManager.Core;
 using ShopManager.Core.Generic;
+using ShopManager.Core.Management;
 using ShopManager.Data;
 using ShopManager.Implement.Cars;
 using ShopManager.Implement.Engines;
@@ -10,8 +12,14 @@ namespace ShopManager.Implement
 {
     public static class Bootstrapper
     {
-        public static void PrepairKernel(IKernel kernel)
+        public static void PrepairKernel(IServiceRootProvider serviceRootProvider)
         {
+            serviceRootProvider.AsSingleton<IEntityFactory<CarEntity>, ICarFactory, CarFactory>();
+            //serviceRootProvider.AsSingleton<IEntityFactory<CarEntity>, ICarFactory, CarFactory>();
+
+
+
+
             kernel.Bind<ICarFactory, IEntityFactory<CarEntity>>().To<CarFactory>().InSingletonScope();
             kernel.Bind<IEntityRepository<CarEntity>, EntityRepository<CarEntity>, ICarRepository>().To<CarRepository>().InSingletonScope();
             kernel.Bind<IEntityManager, IEntityManager<CarEntity>, EntityManager<CarEntity>, ICarManager>().To<CarManager>().InSingletonScope();
@@ -58,6 +66,17 @@ namespace ShopManager.Implement
                 .To<TEntityManager>().InSingletonScope();*/
 
             return kernel;
+        }
+    }
+
+
+    public class SimpleValidation : AbstractValidator<CarEntity>
+    {
+        public SimpleValidation()
+        {
+            RuleFor(x => x.Age).
+                GreaterThanOrEqualTo(1).
+                WithMessage("Should be greater than zero");
         }
     }
 }

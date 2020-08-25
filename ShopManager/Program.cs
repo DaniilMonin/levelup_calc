@@ -2,10 +2,12 @@
 using System.Linq;
 using Ninject;
 using ShopManager.Core;
+using ShopManager.Core.Management;
 using ShopManager.Data;
 using ShopManager.Data.Db.Context;
 using ShopManager.Implement;
 using ShopManager.Implement.Cars;
+using ShopManager.Implement.Infrastructure;
 using ShopManager.Implement.Users;
 
 namespace ShopManager
@@ -14,6 +16,13 @@ namespace ShopManager
     {
         static void Main(string[] args)
         {
+
+            IServiceRootProvider serviceRootProvider = new AutofacServiceRootProvider();
+
+            
+
+
+            Foo f = new Foo();
 
             using (var dbContext = new ShopManagerDatabaseContext())
             {
@@ -64,5 +73,17 @@ namespace ShopManager
             IUserManager userManager = kernel.Get<IUserManager>();
             userManager.Refresh();
         }
+
+
+    }
+
+    public class Bar
+    {
+
+    }
+
+    public class Foo : FluentValidation.AbstractValidator<Bar>
+    {
+
     }
 }

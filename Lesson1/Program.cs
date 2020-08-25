@@ -160,6 +160,8 @@ namespace Lesson1
     {
         [Obsolete("OLD CODE DETECTED")]
         TData Build();
+
+        TData BuildWithNewId(int id);
     }
 
     public sealed class EntityFactory<TEntity> : IFactory<TEntity>
@@ -175,6 +177,14 @@ namespace Lesson1
         public TEntity Build()
         {
             return _kernel.Get<TEntity>();
+        }
+
+        public TEntity BuildWithNewId(int id)
+        {
+            TEntity entity = Build();
+            entity.Id = id;
+
+            return entity;
         }
     }
 

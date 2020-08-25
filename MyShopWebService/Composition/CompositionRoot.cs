@@ -1,4 +1,6 @@
 ﻿using Ninject;
+using ShopManager.Data;
+using ShopManager.Implement;
 using ShopManager.Implement.Users;
 
 namespace MyShopWebService.Composition
@@ -16,6 +18,9 @@ namespace MyShopWebService.Composition
             ShopManager.Implement.Bootstrapper.PrepairKernel(kernel);
 
             _userManager = kernel.Get<IUserManager>();
+
+            SimpleValidation foo = new SimpleValidation();
+            foo.Validate(new CarEntity());
         }
 
 
