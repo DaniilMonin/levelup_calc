@@ -25,6 +25,11 @@ namespace MyShopWebService.Controllers
         [HttpGet]
         public IReadOnlyList<User> Get()
         {
+            if (_userManager is null)
+            {
+                return Array.Empty<User>();
+            }
+
             _userManager.Refresh();
 
             return _userManager.Entities;

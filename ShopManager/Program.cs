@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Ninject;
 using ShopManager.Core;
 using ShopManager.Core.Management;
@@ -14,8 +17,15 @@ namespace ShopManager
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
+
+            ShopManagerDapperContext context = new ShopManagerDapperContext();
+
+            //int count = await context.RunInsertAsync().ConfigureAwait(false);
+
+            IEnumerable<ProductLiteDTO> products = await context.GetAllProducts().ConfigureAwait(false);
+
 
             IServiceRootProvider serviceRootProvider = new AutofacServiceRootProvider();
 
@@ -58,7 +68,7 @@ namespace ShopManager
 
             ShopManager.Core.Bootstrapper.PrepairKernel(kernel);
             ShopManager.Data.Db.Bootstrapper.PrepairKernel(kernel);
-            ShopManager.Implement.Bootstrapper.PrepairKernel(kernel);
+           // ShopManager.Implement.Bootstrapper.PrepairKernel(kernel);
             
 
 

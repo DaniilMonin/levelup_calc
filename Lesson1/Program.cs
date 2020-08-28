@@ -13,28 +13,83 @@ namespace Lesson1
 {
     class Program
     {
-        static void Main(string[] args)
+         static void Main(string[] args)
         {
 
+
+
+
+
+
+            /*object foo1 = new object();
+            object foo2 = new object();
+
+            Console.WriteLine($"Thread {Thread.CurrentThread.Name} -- START");
+
+            Thread thread = new Thread(o =>
+            {
+                Console.WriteLine($"Thread {Thread.CurrentThread.Name}");
+
+                Console.WriteLine($"Thread {Thread.CurrentThread.Name} -- START");
+
+                lock (foo1)
+                {
+                    int hashCode2 = foo1.GetHashCode();
+
+                    Thread.Sleep(1000);
+
+                    lock (foo2)
+                    {
+                        
+                    }
+
+                    Thread.Sleep(10000);
+
+                    Console.WriteLine($"Thread {Thread.CurrentThread.Name} -- LOCK {hashCode2}");
+                }
+
+                Console.WriteLine($"Thread {Thread.CurrentThread.Name} -- END");
+            });
+
+            thread.Name = "Child Thread 1";
+
+
+            thread.Start();
+
+            lock (foo2)
+            {
+                Thread.Sleep(1000);
+
+                int hashCode = foo2.GetHashCode();
+
+                lock (foo1)
+                {
+                    
+                }
+
+                Thread.Sleep(5000);
+                Console.WriteLine($"Thread {Thread.CurrentThread.Name} -- END {hashCode}");
+            }*/
+        }
+
+        /*
+         *Should be in main
+         *
+         *
+         *
+         *
+         *
+         */
+
+        /*
             AboutForm aboutForm = new AboutForm();
             FindAndReplaceForm findAndReplaceForm = new FindAndReplaceForm();
 
 
             aboutForm.AddId(100).AddLocale("ru_RU".RemoveSecondChar().RemoveSecondChar());
 
-
-
-            /*
-            LocalizableCaptionAttribute att = aboutForm
-                .GetType()
-                .GetTypeInfo()
-                .GetCustomAttribute<LocalizableCaptionAttribute>();
-
-
-            System.Console.WriteLine($"My id is {att.Id}");*/
-
-
-            List<int> jkl = new List<int>() {1, 2, 3};
+          
+            List<int> jkl = new List<int>() { 1, 2, 3 };
 
 
             jkl.Where(x => x > 2).FirstOrDefault();
@@ -74,9 +129,9 @@ namespace Lesson1
             BookEntity b5 = bookFactory.Build();
 
             int length = stringsService.GetStringLength();
-
-            //Thread.
-        }
+            
+             */
+        //Thread.
     }
 
 

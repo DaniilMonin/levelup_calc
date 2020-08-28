@@ -20,7 +20,7 @@ namespace ShopManager.Implement
 
 
 
-            kernel.Bind<ICarFactory, IEntityFactory<CarEntity>>().To<CarFactory>().InSingletonScope();
+            /*kernel.Bind<ICarFactory, IEntityFactory<CarEntity>>().To<CarFactory>().InSingletonScope();
             kernel.Bind<IEntityRepository<CarEntity>, EntityRepository<CarEntity>, ICarRepository>().To<CarRepository>().InSingletonScope();
             kernel.Bind<IEntityManager, IEntityManager<CarEntity>, EntityManager<CarEntity>, ICarManager>().To<CarManager>().InSingletonScope();
 
@@ -31,7 +31,7 @@ namespace ShopManager.Implement
             kernel.Bind<IEntityManager, IEntityManager<EngineEntity>, EntityManager<EngineEntity>, IEngineManager>().To<EngineManager>().InSingletonScope();
 
             kernel.Bind<IUserFactory, IEntityFactory<User>>().To<UserFactory>().InSingletonScope();
-            kernel.Bind<IEntityManager, IEntityManager<User>, EntityManager<User>, IUserManager>().To<UserManager>().InSingletonScope();
+            kernel.Bind<IEntityManager, IEntityManager<User>, EntityManager<User>, IUserManager>().To<UserManager>().InSingletonScope();*/
 
             //RegisterEntity<CarEntity, CarFactory, CarRepository, CarManager>(kernel);
             //RegisterEntity<EngineEntity, EngineFactory, EngineRepository, EngineManager>(kernel);

@@ -27,7 +27,7 @@ namespace MyShopWebService
 
         public static IHostBuilder CreateHostBuilder(string[] args, ContainerBuilder containerBuilder) =>
             Host.CreateDefaultBuilder(args)
-                .UseServiceProviderFactory(new AutofacCustomFactory(containerBuilder))
+                //.UseServiceProviderFactory(new AutofacCustomFactory(containerBuilder))
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

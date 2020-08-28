@@ -11,13 +11,13 @@ namespace MyShopWebService.Composition
 
         public CompositionRoot()
         {
-            IKernel kernel = new StandardKernel();
+            //IKernel kernel = new StandardKernel();
 
-            ShopManager.Core.Bootstrapper.PrepairKernel(kernel);
+            /*ShopManager.Core.Bootstrapper.PrepairKernel(kernel);
             ShopManager.Data.Db.Bootstrapper.PrepairKernel(kernel);
             ShopManager.Implement.Bootstrapper.PrepairKernel(kernel);
 
-            _userManager = kernel.Get<IUserManager>();
+            _userManager = kernel.Get<IUserManager>();*/
 
             SimpleValidation foo = new SimpleValidation();
             foo.Validate(new CarEntity());
